@@ -31,7 +31,7 @@ pipeline {
                             "parameters": {
                                 "tag": "$BUILD_ID"
                             }
-                        }'  | grep -o '"id":"[^"]*"' | awk -F':' '{print $2}' | tr -d '"'
+                        }'  | grep -o '"id":"[^"]*"' | awk -F':' '{print \$2}' | tr -d '"'
                     """, returnStdout: true).trim()
 
                     echo "Triggered CircleCI Pipeline ID: ${pipeline_id}"
@@ -50,7 +50,7 @@ pipeline {
 
                         status = sh(script: """
                             curl --silent --location 'https://circleci.com/api/v2/pipeline/${env.PIPELINE_ID}/workflow' \
-                            --header 'Circle-Token: $CIRCLECI_TOKEN' | grep -o '"status" *: *"[^"]*"' | awk -F': ' '{print $2}' | tr -d '"'
+                            --header 'Circle-Token: $CIRCLECI_TOKEN' | grep -o '"status" *: *"[^"]*"' | awk -F': ' '{print \$2}' | tr -d '"'
                         """, returnStdout: true).trim()
                         echo "CircleCI Pipeline Status: ${status}"
                     }
