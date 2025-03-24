@@ -114,6 +114,6 @@ public class StockController {
 
     @PostMapping("/test")
     public ResponseEntity<String> test01() {
-        return ResponseEntity.ok("test01");
+        return ResponseEntity.ok("test1");
     }
 }
