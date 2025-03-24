@@ -23,10 +23,10 @@ pipeline {
                         --data '{
                             "definition_id": "$CIRCLECI_DEFINITION_ID",
                             "config": {
-                                "branch": "circleci-project-setup"
+                                "branch": "develop"
                             },
                             "checkout": {
-                                "branch": "circleci-project-setup"
+                                "branch": "develop"
                             },
                             "parameters": {
                                 "tag": "$BUILD_ID"
