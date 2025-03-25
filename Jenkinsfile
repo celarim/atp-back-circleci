@@ -9,7 +9,6 @@ pipeline {
         CIRCLECI_DEFINITION_ID = '96d0da17-0d80-4527-861c-95c3bfccce0a'
         CIRCLECI_TOKEN = credentials('CIRCLECI_TOKEN')
     }
-
     stages {
         stage('Trigger CircleCI Pipeline') {
             steps {
