@@ -3,15 +3,15 @@ pipeline {
 
     environment {
         NAMESPACE = 'atp'
-        GIT_DEPLOYMENT_YAML = 'https://raw.githubusercontent.com/beyond-sw-camp/be12-3rd-Mr.Krabs-Across-The-Pacific/refs/heads/feat/cicd/jenkins/k8s/backend-deployment.yml'
-        GIT_SERVICE_YAML = 'https://raw.githubusercontent.com/beyond-sw-camp/be12-3rd-Mr.Krabs-Across-The-Pacific/refs/heads/feat/cicd/jenkins/k8s/backend-service.yml'        CIRCLECI_PROJECT_SLUG = ''
+        GIT_DEPLOYMENT_YAML = 'https://raw.githubusercontent.com/beyond-sw-camp/be12-4th-Mr.Krabs-Across-The-Pacific/refs/heads/develop/backend/back-deploy.yaml'
+        GIT_SERVICE_YAML = 'https://raw.githubusercontent.com/beyond-sw-camp/be12-4th-Mr.Krabs-Across-The-Pacific/refs/heads/develop/backend/back-svc.yaml'
         CIRCLECI_PROJECT_SLUG = 'circleci/EAQqLFJfLAc1BW9jMD56YP/LWRnp5gwohJsMWpZSfygty'
         CIRCLECI_DEFINITION_ID = '96d0da17-0d80-4527-861c-95c3bfccce0a'
         CIRCLECI_TOKEN = credentials('CIRCLECI_TOKEN')
     }
 
     stages {
-		stage('Trigger CircleCI Pipeline') {
+        stage('Trigger CircleCI Pipeline') {
             steps {
                 script {
                     echo "Starting CircleCI Pipeline...."
@@ -68,7 +68,7 @@ pipeline {
         stage('Get Blue or Green') {
 			steps {
 				script {
-					if ( BUILD_ID.toInteger() % 2 == 0) {
+					if (BUILD_ID.toInteger() % 2 == 0) {
 						env.BORG = "blue"
 						env.NOTBORG = "green"
 					} else {
@@ -98,7 +98,7 @@ pipeline {
                                     sshTransfer(
                                         execCommand: """
                                             kubectl rollout status deployment/backend-${env.BORG} -n ${NAMESPACE}
-                                            kubectl wait --for=condition=available deployment/backend-${env.BORG} --timeout=120s -n ${NAMESPACE}
+                                            kubectl wait --for=condition=available deployment/backend-${env.BORG} --timeout=600s -n ${NAMESPACE}
                                         """
                                     ),
                                     sshTransfer(
