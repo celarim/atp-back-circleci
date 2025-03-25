@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
     environment {
-        NAMESPACE = 'kgj'
+        NAMESPACE = 'atp'
         GIT_DEPLOYMENT_YAML = 'https://raw.githubusercontent.com/beyond-sw-camp/be12-3rd-Mr.Krabs-Across-The-Pacific/refs/heads/feat/cicd/jenkins/k8s/backend-deployment.yml'
         GIT_SERVICE_YAML = 'https://raw.githubusercontent.com/beyond-sw-camp/be12-3rd-Mr.Krabs-Across-The-Pacific/refs/heads/feat/cicd/jenkins/k8s/backend-service.yml'        CIRCLECI_PROJECT_SLUG = ''
         CIRCLECI_PROJECT_SLUG = 'circleci/EAQqLFJfLAc1BW9jMD56YP/LWRnp5gwohJsMWpZSfygty'
