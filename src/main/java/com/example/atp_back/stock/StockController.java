@@ -114,6 +114,6 @@ public class StockController {
 
     @GetMapping("/test")
     public ResponseEntity<String> test01() {
-        return ResponseEntity.ok("test1");
+        return ResponseEntity.ok("test2");
     }
 }
