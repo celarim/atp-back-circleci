@@ -14,7 +14,7 @@ pipeline {
 		stage('Trigger CircleCI Pipeline') {
             steps {
                 script {
-                    echo "Starting CircleCI Pipeline..."
+                    echo "Starting CircleCI Pipeline...."
 
                     // CircleCI 파이프라인 실행 및 ID 가져오기
                     def pipeline_id = sh(script: """
